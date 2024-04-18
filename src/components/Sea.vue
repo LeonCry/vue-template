@@ -1,5 +1,5 @@
 <template>
-  <div>ABC</div>
+  <div>Sea</div>
 </template>
 <script setup lang="ts"></script>
 <style scoped lang="scss"></style>

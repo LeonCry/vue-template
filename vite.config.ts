@@ -1,14 +1,16 @@
-import path from 'node:path'
-import { defineConfig, loadEnv } from 'vite'
-import Vue from '@vitejs/plugin-vue'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
+import path from 'node:path';
+import { defineConfig, loadEnv } from 'vite';
+import Vue from '@vitejs/plugin-vue';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import ElementPlus from 'unplugin-element-plus/vite';
+import Components from 'unplugin-vue-components/vite';
+import AutoImport from 'unplugin-auto-import/vite';
 import tailwindcss from 'tailwindcss';
 export default defineConfig(({ mode }) => {
   //command = 'serve' | 'build'
   const env = loadEnv(mode, process.cwd());
   return {
-    base: env.VITE_APP_ROUTER_PREFIX,
+    base: `/${env.VITE_APP_ROUTER_PREFIX}`,
     resolve: {
       alias: {
         '@/': `${path.resolve(__dirname, 'src')}/`,
@@ -19,15 +21,16 @@ export default defineConfig(({ mode }) => {
       AutoImport({
         imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
         dts: true,
-        dirs: [
-          './src/composables',
-        ],
+        resolvers: [ElementPlusResolver()],
+        dirs: ['./src/composables'],
         vueTemplate: true,
       }),
       Components({
         dts: true,
-        dirs: ['src/components', 'src/pages'],
+        dirs: ['src/components', 'src/pages', 'src/layouts'],
+        resolvers: [ElementPlusResolver()],
       }),
+      ElementPlus({}),
     ],
     css: {
       postcss: {
@@ -40,15 +43,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: 'localhost',
-      port: 6666,
-      proxy: {
-        '/api': {
-          target: env.VITE_APP_PROXY_API,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-      },
-      cors: true,
+      port: 3333,
     },
-  }
-})
+  };
+});

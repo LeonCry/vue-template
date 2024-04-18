@@ -5,9 +5,10 @@
     "lib": ["DOM", "ESNext"],
     "baseUrl": ".",
     "module": "ESNext",
+    "outDir": "./dist",
     "moduleResolution": "bundler",
     "paths": {
-      "~/*": ["src/*"]
+      "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
@@ -16,12 +17,7 @@
     "noUnusedLocals": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "eslint.config.js",
-    "tailwind.config.js"
-  ]
+  "exclude": ["dist", "node_modules", "eslint.config.js", "tailwind.config.js"]
 }
