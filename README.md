@@ -1,2 +1,0 @@
-# vue-template
-vue-template
