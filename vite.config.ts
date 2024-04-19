@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
       }),
       Components({
         dts: true,
-        dirs: ['src/components', 'src/pages', 'src/layouts'],
+        dirs: ['src/components', 'src/views', 'src/layouts'],
         resolvers: [ElementPlusResolver()],
       }),
       ElementPlus({}),

@@ -8,6 +8,9 @@ dependencies:
   '@element-plus/icons-vue':
     specifier: ^2.3.1
     version: 2.3.1(vue@3.4.21)
+  '@tabler/icons-vue':
+    specifier: ^2.47.0
+    version: 2.47.0(vue@3.4.21)
   '@vitejs/plugin-vue':
     specifier: ^5.0.4
     version: 5.0.4(vite@5.1.4)(vue@3.4.21)
@@ -79,9 +82,6 @@ devDependencies:
   lint-staged:
     specifier: ^15.2.2
     version: 15.2.2
-  pnpm:
-    specifier: ^8.15.4
-    version: 8.15.4
   prettier-plugin-tailwindcss:
     specifier: ^0.5.13
     version: 0.5.13(prettier@3.2.5)
@@ -1061,6 +1061,19 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@tabler/icons-vue@2.47.0(vue@3.4.21):
+    resolution: {integrity: sha512-huEDak5xouwsRjbTUZlYZny9kC8ez61vdx/KwhR2Uc5HcUpxpFy+7p+IKH/ZZ48IcTHmCbdBJgbFRUI1mePJog==}
+    peerDependencies:
+      vue: '>=3.0.1'
+    dependencies:
+      '@tabler/icons': 2.47.0
+      vue: 3.4.21(typescript@5.3.3)
+    dev: false
+
+  /@tabler/icons@2.47.0:
+    resolution: {integrity: sha512-4w5evLh+7FUUiA1GucvGj2ReX2TvOjEr4ejXdwL/bsjoSkof6r1gQmzqI+VHrE2CpJpB3al7bCTulOkFa/RcyA==}
+    dev: false
 
   /@types/conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
@@ -3204,12 +3217,6 @@ packages:
       jsonc-parser: 3.2.0
       mlly: 1.4.2
       pathe: 1.1.1
-    dev: true
-
-  /pnpm@8.15.4:
-    resolution: {integrity: sha512-C9Opvp6w6aaSZ23uwAowO6IYuiedmSQUdWFrOY267t0RFG+SwoQ0WPVXsdEn4J1MFx4QW9zWthACs5aFqAFrng==}
-    engines: {node: '>=16.14'}
-    hasBin: true
     dev: true
 
   /postcss-attribute-case-insensitive@6.0.3(postcss@8.4.35):
