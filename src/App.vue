@@ -1,7 +1,5 @@
 <template>
-  <defaultLayout>
-    <RouterView />
-  </defaultLayout>
+  <RouterView />
 </template>
 <script lang="ts" setup></script>
 <style module></style>

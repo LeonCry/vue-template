@@ -1,8 +1,6 @@
 import path from 'node:path';
 import { defineConfig, loadEnv } from 'vite';
 import Vue from '@vitejs/plugin-vue';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import ElementPlus from 'unplugin-element-plus/vite';
 import Components from 'unplugin-vue-components/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import tailwindcss from 'tailwindcss';
@@ -13,7 +11,7 @@ export default defineConfig(({ mode }) => {
     base: `/${env.VITE_APP_ROUTER_PREFIX}`,
     resolve: {
       alias: {
-        '@/': `${path.resolve(__dirname, 'src')}/`,
+        '@': `${path.resolve(__dirname, 'src')}`,
       },
     },
     plugins: [
@@ -21,16 +19,13 @@ export default defineConfig(({ mode }) => {
       AutoImport({
         imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
         dts: true,
-        resolvers: [ElementPlusResolver()],
-        dirs: ['./src/composables'],
-        vueTemplate: true,
+        // resolvers: [],
       }),
       Components({
         dts: true,
         dirs: ['src/components', 'src/views', 'src/layouts'],
-        resolvers: [ElementPlusResolver()],
+        // resolvers: [],
       }),
-      ElementPlus({}),
     ],
     css: {
       postcss: {

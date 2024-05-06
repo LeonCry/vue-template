@@ -19,5 +19,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "exclude": ["dist", "node_modules", "eslint.config.js", "tailwind.config.js"]
+  "include": ["./*.d.ts", "./src/**/*.js", "./src/**/*.ts", "./src/**/*.vue"]
 }
