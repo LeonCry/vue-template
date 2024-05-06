@@ -13,10 +13,15 @@ request.interceptors.response.use(
     const { data } = response;
     if (data.code === 401) {
       console.log('token过期');
-    } else if (data.code) {
+      ElMessage.info('登录过期,请重新登录');
+      // user.logout();
+    } else if (data.code === 200) {
+      if (response.data.code === 500) return ElMessage.error(data.msg || `异常：${data.code}`);
+      return response.data;
+    } else if (data.code === 500) {
       ElMessage.error(data.msg || `异常：${data.code}`);
     }
-    return response;
+    return response.data;
   },
   (error) => {
     const { response } = error;
