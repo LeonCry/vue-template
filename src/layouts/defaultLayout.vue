@@ -1,9 +1,9 @@
 <template>
-  <main class="flex h-svh w-svw overflow-hidden">
+  <main class="flex h-svh w-svw overflow-auto">
     <aside>AsideBar</aside>
-    <section class="relative flex flex-1 flex-col">
+    <section class="relative flex min-w-[900px] flex-1 flex-col">
       <header>Header</header>
-      <RouterView class="w-full flex-1 overflow-auto" />
+      <RouterView class="flex-1 overflow-auto" />
     </section>
   </main>
 </template>

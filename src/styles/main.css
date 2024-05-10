@@ -5,7 +5,7 @@ html,
 body,
 #app {
   width:100vw;height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   margin: 0;
   padding: 0;
 }
