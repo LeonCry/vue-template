@@ -4,13 +4,13 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/main' },
   {
     path: '/main',
-    redirect: '/main/workbench',
+    redirect: '/main/hello',
     component: () => import('@/layouts/defaultLayout.vue'),
     children: [
       {
-        path: 'workbench',
-        name: '工作台',
-        component: () => import('@/views/workBench/WorkBenchView.vue'),
+        path: 'hello',
+        name: 'hello',
+        component: () => import('@/views/hello/Hello.vue'),
       },
     ],
   },
