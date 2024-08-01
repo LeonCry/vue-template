@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'MiSans';
+  src: url('/src/assets/font/MiSans-Regular.ttf');
+}
+@font-face {
+  font-family: 'Ubu';
+  src: url('/src/assets/font/Ubuntu-Regular.ttf');
+}
+.font-Mi {
+  font-family: 'MiSans';
+}
+.font-Ubu {
+  font-family: 'Ubu';
+}
