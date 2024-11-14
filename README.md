@@ -1,4 +1,9 @@
-# SEACI VUE 项目模板
+# SEACI-VUE 项目模板
+
+## 编辑器
+
+- 建议使用 `VSCode` 编辑器
+- 打开项目会有推荐安装插件,建议一键安装
 
 ## 项目结构
 
@@ -30,11 +35,15 @@
 - `src/assets`: 存放项目资源文件，如图片、样式等
 - `src/components`: 存放可复用的组件
 - `src/router`: 路由配置文件
-- `src/store`: Vuex 状态管理相关文件
+- `src/store`: Pinia 状态管理相关文件
 - `src/utils`: 工具函数和通用方法
 - `src/views`: 页面级组件
 - `src/App.vue`: 应用程序的根组件
 - `src/main.js`: 应用程序的入口文件'
+
+## CSS拓展
+
+- 使用 `tailwindcss` 编写样式
 
 ## 项目环境配置
 
@@ -46,7 +55,7 @@
 
 - 全局搜索 `project-name` 替换为你的项目目录名
 - `.env.local` 中 `VITE_APP_TITLE_ZH` 替换为你的项目中文名称
-- `.env.xxx` 中 `VITE_PREFIX_URL` 一般用来表示接口前缀
+- `.env.dev` `.env.pre` `.env.prod` 中 `VITE_PREFIX_URL` 一般用来表示接口前缀
 
 2. 运行
 

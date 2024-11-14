@@ -3,6 +3,8 @@
     // Linting / Formatting
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    // Theme
+    "seaci.seaci-theme"
   ]
 }

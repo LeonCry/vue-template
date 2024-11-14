@@ -1,10 +1,12 @@
+import type { ConfigEnv, UserConfig } from 'vite';
 import path from 'node:path';
-import { defineConfig, loadEnv, UserConfig } from 'vite';
+import process from 'node:process';
 import Vue from '@vitejs/plugin-vue';
-import Components from 'unplugin-vue-components/vite';
-import AutoImport from 'unplugin-auto-import/vite';
 import tailwindcss from 'tailwindcss';
-import { ConfigEnv } from 'vite';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { defineConfig, loadEnv } from 'vite';
+
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd());
   return {

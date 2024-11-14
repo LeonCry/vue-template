@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
+
 const request = axios.create({ baseURL: import.meta.env.VITE_PREFIX_URL });
 // 请求拦截器
 request.interceptors.request.use((config) => {
@@ -9,16 +10,18 @@ request.interceptors.request.use((config) => {
 });
 // 响应拦截器
 request.interceptors.response.use(
-  (response) => {
+  (response: any) => {
     const { data } = response;
     if (data.code === 401) {
-      console.log('token过期');
       ElMessage.info('登录过期,请重新登录');
       // user.logout();
-    } else if (data.code === 200) {
-      if (response.data.code === 500) return ElMessage.error(data.msg || `异常：${data.code}`);
+    }
+    else if (data.code === 200) {
+      if (response.data.code === 500)
+        return ElMessage.error(data.msg || `异常：${data.code}`);
       return response.data;
-    } else if (data.code === 500) {
+    }
+    else if (data.code === 500) {
       ElMessage.error(data.msg || `异常：${data.code}`);
     }
     return response.data;
