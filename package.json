@@ -46,7 +46,7 @@
     "lint-staged": "^15.2.10",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "sass": "^1.80.7",
-    "typescript": "^5.6.3",
+    "typescript": "^5.4.5",
     "vite": "^5.4.11"
   },
   "lint-staged": {
