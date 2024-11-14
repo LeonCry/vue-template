@@ -1,9 +1,11 @@
 @font-face {
   font-family: 'MiSans';
+  font-display: fallback;
   src: url('/src/assets/font/MiSans-Regular.ttf');
 }
 @font-face {
   font-family: 'Ubu';
+  font-display: fallback;
   src: url('/src/assets/font/Ubuntu-Regular.ttf');
 }
 .font-Mi {
