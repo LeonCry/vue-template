@@ -57,3 +57,7 @@
 3. git 提交规范
 
 - 使用 `pnpm cz` 提交代码,并按照提示输入提交信息
+
+4. git 分支保护
+
+- 默认保护 `main` `master` `pre` 分支, 如果需要修改, 请修改 `.husky/pre-commit` 文件
