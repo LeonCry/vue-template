@@ -9,7 +9,8 @@ export default antfu(
     rules: {
       'style/semi': ['warn', 'always'],
       'style/quotes': ['warn', 'single'],
-      'no-unused-vars': ['warn'],
+      'unused-imports/no-unused-imports': 'off',
+      'unused-imports/no-unused-vars': ['warn'],
       'eqeqeq': ['error', 'always'],
       'no-console': 'off',
     },
