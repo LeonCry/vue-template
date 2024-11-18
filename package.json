@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "cz": "git add . && czg",
+    "cz": "pnpm lint:fix && git add . && czg",
     "type-check": "tsc  --noemit",
     "prepare": "husky install"
   },
