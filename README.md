@@ -15,7 +15,7 @@
 
 - 项目环境变量配置文件：`.env.local` `.env.dev` `.env.pre` `.env.prod`
 
-## 开箱即用
+## 开箱即用(以下针对未使用 `ice-sea-template-cli` 创建的项目)
 
 1. 配置
 
