@@ -5,8 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
+    "pre": "vite --mode pre",
     "prod": "vite --mode prod",
     "build:dev": "vite build --mode dev",
+    "build:pre": "vite build --mode pre",
     "build:prod": "vite build --mode prod",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

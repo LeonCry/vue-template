@@ -1,4 +1,5 @@
 import type { ConfigEnv, UserConfig } from 'vite';
+import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import Vue from '@vitejs/plugin-vue';
@@ -24,6 +25,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         dirs: ['src/components', 'src/views', 'src/layouts'],
         // resolvers: [],
       }),
+      {
+        name: 'branch-info',
+        closeBundle() {
+          const branchFileName = `${env.VITE_ENV_SIGN_ZH}-${env.VITE_APP_TITLE_ZH}.sign`;
+          const outputPath = path.join(env.VITE_APP_OUTPUT, branchFileName);
+          fs.writeFileSync(outputPath, `Branch: ${env.VITE_ENV_SIGN_ZH}\nProject Name: ${env.VITE_APP_TITLE_ZH}\nBuild Time: ${new Date().toLocaleString()}`);
+        },
+      },
     ],
     css: { postcss: { plugins: [tailwindcss] } },
     build: {
