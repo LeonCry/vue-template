@@ -11,11 +11,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd());
   return {
     base: `/${env.VITE_APP_ROUTER_PREFIX}`,
-    resolve: {
-      alias: {
-        '@': `${path.resolve(__dirname, 'src')}`,
-      },
-    },
+    resolve: { alias: { '@': `${path.resolve(__dirname, 'src')}` } },
     plugins: [
       Vue(),
       AutoImport({
@@ -29,11 +25,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         // resolvers: [],
       }),
     ],
-    css: {
-      postcss: {
-        plugins: [tailwindcss],
-      },
-    },
+    css: { postcss: { plugins: [tailwindcss] } },
     build: {
       outDir: env.VITE_APP_OUTPUT,
       sourcemap: Boolean(env.VITE_APP_SOURCEMAP),
