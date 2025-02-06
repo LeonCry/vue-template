@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite --mode dev",
-    "pre": "vite --mode pre",
-    "prod": "vite --mode prod",
+    "dev": "vite --mode dev --host",
+    "pre": "vite --mode pre --host",
+    "prod": "vite --mode prod --host",
     "build:dev": "vite build --mode dev",
     "build:pre": "vite build --mode pre",
     "build:prod": "vite build --mode prod",
