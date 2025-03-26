@@ -36,4 +36,3 @@
 - `npm install` 安装项目依赖
 - `npm run dev/pre/prod` 启动项目
 - `npm run build:dev/pre/prod` 打包项目
-
