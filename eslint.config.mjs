@@ -41,7 +41,7 @@ export default antfu(
       'vue/max-attributes-per-line': [
         'warn',
         {
-          singleline: 1,
+          singleline: 3,
           multiline: 1,
         },
       ],
