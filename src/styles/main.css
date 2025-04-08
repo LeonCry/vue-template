@@ -1,7 +1,7 @@
 @import url("./fonts.css");
 @import url("./animations.css");
 @import url("./scrollbar.css");
-@import url("/fonts/AlibabaPuHuiTi-3-55-Regular 4/result.css");
+@import url("/fonts/AlibabaPuHuiTi-3-55-Regular/result.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
