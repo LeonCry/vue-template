@@ -40,6 +40,7 @@ export const THIS_IS_CONSTANT = "一个常量";
 5. js文件名全部采用小写方式， 优先选择单个单词命名，多个单词命名以短横线分隔。
 6. 文件扩展名为 .vue 的组件名应该始终是单词大写开头 (PascalCase)。
 7. Vue Router Path命名采用 kebab-case 格式
+8. 工具类函数采用 kebab-case 格式
 
 ### CSS
 
