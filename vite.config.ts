@@ -5,25 +5,28 @@ import process from 'node:process';
 import Vue from '@vitejs/plugin-vue';
 import tailwindcss from 'tailwindcss';
 import AutoImport from 'unplugin-auto-import/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig, loadEnv } from 'vite';
 
+const dateTime = new Date().toISOString();
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd());
   return {
     base: `/${env.VITE_APP_ROUTER_PREFIX}`,
+    define: { __APP_VERSION__: JSON.stringify(dateTime) },
     resolve: { alias: { '@': `${path.resolve(__dirname, 'src')}` } },
     plugins: [
       Vue(),
       AutoImport({
         imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
         dts: true,
-        // resolvers: [],
+        resolvers: [ElementPlusResolver()],
       }),
       Components({
         dts: true,
         dirs: ['src/components', 'src/views', 'src/layouts'],
-        // resolvers: [],
+        resolvers: [ElementPlusResolver()],
       }),
       {
         name: 'branch-info',
@@ -31,6 +34,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           const branchFileName = `${env.VITE_ENV_SIGN_ZH}-${env.VITE_APP_TITLE_ZH}.sign`;
           const outputPath = path.join(env.VITE_APP_OUTPUT, branchFileName);
           fs.writeFileSync(outputPath, `Branch: ${env.VITE_ENV_SIGN_ZH}\nProject Name: ${env.VITE_APP_TITLE_ZH}\nBuild Time: ${new Date().toLocaleString()}`);
+        },
+      },
+      {
+        name: 'update-version',
+        writeBundle() {
+          const filePath = path.resolve(env.VITE_APP_OUTPUT, 'version.json');
+          const fileContents = JSON.stringify({ version: dateTime });
+          fs.writeFileSync(filePath, fileContents);
         },
       },
     ],
