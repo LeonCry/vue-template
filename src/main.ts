@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import { createPinia } from 'pinia';
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
 declare const __APP_VERSION__: string;
-const app = createApp(App).use(router).use(createPinia().use(piniaPluginPersistedstate));
+const app = createApp(App).use(router).use(createPinia());
 app.mount('#app');
 
 router.beforeEach(() => {
