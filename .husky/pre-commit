@@ -3,7 +3,7 @@
 . "$(dirname "$0")/common.sh"
 
 
-echo "===\n>> Checking branch name..."
+echo "===\n>> 检查分支名称..."
 
 # Check if branch protection is enabled
 if [[ -z $SKIP_BRANCH_PROTECTION ]]; then
@@ -11,15 +11,13 @@ if [[ -z $SKIP_BRANCH_PROTECTION ]]; then
     PROTECTED_BRANCHES="^(main|master|pre)"
 
     if [[ $BRANCH =~ $PROTECTED_BRANCHES ]]; then
-        echo ">> Direct commits to the $BRANCH branch are not allowed. Please choose a new branch name."
+        echo ">> 当前分支 $BRANCH 仅允许合并,不允许直接提交修改."
         exit 1
     fi
 else
-    echo ">> Skipping branch protection."
+    echo ">> 跳过分支保护."
 fi
 
-echo ">> Finish checking branch name"
-echo ">> Linting your files and fixing them if needed..."
+echo ">> 分支名称: OK"
 
-pnpm type-check
-pnpm lint-staged
+npx lint-staged

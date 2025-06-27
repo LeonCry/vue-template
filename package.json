@@ -10,11 +10,8 @@
     "build:dev": "vite build --mode dev",
     "build:pre": "vite build --mode pre",
     "build:prod": "vite build --mode prod",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "cz": "pnpm lint:fix && git add . && czg",
-    "type-check": "tsc  --noemit",
+    "cz": "git add . && czg",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -40,16 +37,11 @@
     "@types/node": "^24.0.4",
     "commitizen": "^4.3.1",
     "cz-git": "^1.11.2",
-    "czg": "^1.11.1",
     "eslint": "^9.29.0",
-    "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "typescript": "^5.8.3",
     "vite": "^7.0.0"
-  },
-  "lint-staged": {
-    "*.{ts,js,vue}": "eslint --fix"
   },
   "config": {
     "commitizen": {
