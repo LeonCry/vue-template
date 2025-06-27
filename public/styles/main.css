@@ -1,15 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 html,
 body,
 #app {
-  width:100vw;height: 100vh;
+  width: 100vw;
+  height: 100vh;
   overflow: auto;
   margin: 0;
   padding: 0;
   font-family: 'Alibaba PuHuiTi 3.0 55 Regular';
 }
+
 .font-albb {
   font-family: 'Alibaba PuHuiTi 3.0 55 Regular';
 }

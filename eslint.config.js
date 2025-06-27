@@ -9,12 +9,12 @@ export default antfu({
     'style/semi': ['warn', 'always'],
     'style/quotes': ['warn', 'single'],
     'unused-imports/no-unused-vars': ['warn'],
-    'no-console': 'off',
+    'no-console': 'error',
     'antfu/if-newline': 'off',
     'style/max-len': [
       'error',
       {
-        code: 120,
+        code: 100,
         ignoreUrls: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,

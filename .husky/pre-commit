@@ -1,5 +1,3 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 . "$(dirname "$0")/common.sh"
 
 
@@ -18,6 +16,6 @@ else
     echo ">> 跳过分支保护."
 fi
 
-echo ">> 分支名称: OK"
+echo ">> $BRANCH NOT IN $PROTECTED_BRANCHES, 检查通过"
 
 npx lint-staged
