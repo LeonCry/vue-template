@@ -11,7 +11,7 @@
     "build:pre": "vite build --mode pre",
     "build:prod": "vite build --mode prod",
     "preview": "vite preview",
-    "cz": "git add . && czg",
+    "cz": "git add . && cz",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -38,6 +38,7 @@
     "commitizen": "^4.3.1",
     "cz-git": "^1.11.2",
     "eslint": "^9.29.0",
+    "eslint-plugin-format": "1.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "typescript": "^5.8.3",

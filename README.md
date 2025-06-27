@@ -3,7 +3,7 @@
 - github: https://github.com/LeonCry/vue-template
 - cli: https://github.com/LeonCry/ice-sea-template-cli
 
-## Node版本 >= v21.1.0
+## *Node版本 >= v24*
 
 ## 插件（vscode）
 
