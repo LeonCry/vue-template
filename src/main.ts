@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { ElMessage } from 'element-plus';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -20,10 +19,7 @@ router.beforeEach(() => {
       if (__APP_VERSION__ === version) return;
       const target = new URL(location.href);
       target.searchParams.set('time', Date.now().toString());
-      ElMessage.warning('发现新版本,将在2s后刷新页面');
-      setTimeout(() => {
-        location.href = target.toString();
-      }, 2000);
+      location.href = target.toString();
     })
     .catch((error) => {
       console.warn(String(error));
