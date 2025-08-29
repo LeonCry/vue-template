@@ -1,4 +1,4 @@
-# VUE 项目模板
+# 该项目由ice-sea-template-cli项目模板生成
 
 - github: https://github.com/LeonCry/vue-template
 - cli: https://github.com/LeonCry/ice-sea-template-cli
