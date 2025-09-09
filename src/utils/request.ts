@@ -45,8 +45,8 @@ class Request {
   }
 
   async GET<T>(url: string, params?: Record<string, any>): Promise<Response<T>> {
-    const urlWithParams = `${url}?${new URLSearchParams(params).toString()}`;
-    const r = await this.catchProcess<T>(ky.get(urlWithParams, this.kyOptions));
+    const u = params ? `${url}?${new URLSearchParams(params).toString()}` : url;
+    const r = await this.catchProcess<T>(ky.get(u, this.kyOptions));
     return r;
   }
 
