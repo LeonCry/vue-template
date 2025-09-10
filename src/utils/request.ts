@@ -14,15 +14,13 @@ interface Response<T> {
   [key: string]: any
 }
 class Request {
-  baseURL: string;
   headers: Record<string, string>;
   private kyOptions: Options;
   constructor(options?: Options) {
-    this.baseURL = options?.prefixUrl || import.meta.env.VITE_PREFIX_URL;
     const defaultHeaders = { Authorization: localStorage.getItem('token') || '' };
     this.headers = { ...defaultHeaders, ...options?.headers };
     this.kyOptions = {
-      prefixUrl: options?.noPrefixUrl ? undefined : this.baseURL,
+      prefixUrl: options?.noPrefixUrl ? undefined : options?.prefixUrl || import.meta.env.VITE_PREFIX_URL,
       headers: this.headers,
     };
   }
@@ -55,5 +53,8 @@ class Request {
     return r;
   }
 }
-
-export default Request;
+const baseRequest = new Request();
+export {
+  baseRequest as request,
+  Request,
+};
