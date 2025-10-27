@@ -14,7 +14,7 @@ export default antfu({
     'style/max-len': [
       'error',
       {
-        code: 100,
+        code: 121,
         ignoreUrls: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
