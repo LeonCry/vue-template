@@ -1,10 +1,12 @@
 import type { ResponsePromise } from 'ky';
 import ky from 'ky';
+import { getLocalData } from './get-local-data';
 
 interface Options {
   prefixUrl?: string
   noPrefixUrl?: boolean
   headers?: Record<string, string>
+  timeout?: number
 }
 interface Response<T> {
   code: number
@@ -14,14 +16,34 @@ interface Response<T> {
   [key: string]: any
 }
 class Request {
-  headers: Record<string, string>;
-  private kyOptions: Options;
+  private kyOptions: Omit<Options, 'headers'>;
+  private headers: Record<string, string>;
   constructor(options?: Options) {
-    const defaultHeaders = { Authorization: localStorage.getItem('token') || '' };
-    this.headers = { ...defaultHeaders, ...options?.headers };
     this.kyOptions = {
-      prefixUrl: options?.noPrefixUrl ? undefined : options?.prefixUrl || import.meta.env.VITE_PREFIX_URL,
-      headers: this.headers,
+      prefixUrl: options?.noPrefixUrl
+        ? undefined
+        : options?.prefixUrl || import.meta.env.VITE_PREFIX_URL,
+      timeout: options?.timeout,
+    };
+    this.headers = options?.headers || {};
+  }
+
+  private getRequestOptions() {
+    interface Headers {
+      Authorization: string
+      environment: string
+      tenant: string
+      [x: string]: string
+    }
+    const headers: Headers = {
+      Authorization: getLocalData('USER')?.token || '',
+      environment: getLocalData('PROJECT')?.environment || '',
+      tenant: getLocalData('PROJECT')?.tenant || '',
+      ...this.headers,
+    };
+    return {
+      ...this.kyOptions,
+      headers,
     };
   }
 
@@ -42,18 +64,42 @@ class Request {
     return res;
   }
 
-  async GET<T>(url: string, params?: Record<string, any>): Promise<Response<T>> {
-    const u = params ? `${url}?${new URLSearchParams(params).toString()}` : url;
-    const r = await this.catchProcess<T>(ky.get(u, this.kyOptions));
+  public async GET<T>(url: string, params?: Record<string, any>): Promise<Response<T>> {
+    const urlWithParams = `${url}?${new URLSearchParams(params).toString()}`;
+    const r = await this.catchProcess<T>(ky.get(urlWithParams, this.getRequestOptions()));
     return r;
   }
 
-  async POST<T>(url: string, data?: Record<string, any>): Promise<Response<T>> {
-    const r = await this.catchProcess<T>(ky.post(url, { json: data, ...this.kyOptions }));
+  public async POST<T>(url: string, data?: Record<string, any>): Promise<Response<T>> {
+    const r = await this.catchProcess<T>(ky.post(url, { json: data, ...this.getRequestOptions() }));
     return r;
+  }
+
+  public async DOWNLOAD(url: string, fileName?: string, params?: Record<string, any>) {
+    let name = fileName || '';
+    const u = params ? `${url}?${new URLSearchParams(params).toString()}` : url;
+    const o = this.getRequestOptions();
+    o.headers.responseType = 'blob';
+    const r = await this.catchProcess<Blob>(ky.get(u, o));
+    const b = await r.blob();
+    const h = r.headers;
+    const contentDisposition = h.get('content-disposition') || '';
+    if (typeof (contentDisposition) === 'string') {
+      const entity = contentDisposition
+        .split(';')
+        .map(item => item.trim().split('='))
+        .find(([key]) => key === 'filename');
+      if (entity) name = decodeURIComponent(entity[1]);
+    }
+    const lh = URL.createObjectURL(b);
+    const link = document.createElement('a');
+    link.download = name;
+    link.href = lh;
+    link.click();
   }
 }
 const baseRequest = new Request();
+
 export {
   baseRequest as request,
   Request,

@@ -1,7 +1,11 @@
-# 该项目由ice-sea-template-cli项目模板生成
-
+# VUE3 项目模板
+- 基于 vue3 + typescript + pinia + tailwindcss 等技术栈的项目模板
 - github: https://github.com/LeonCry/vue-template
 - cli: https://github.com/LeonCry/ice-sea-template-cli
+
+## 功能点
+
+- 版本查询并更新功能, 可在 `.env.local` 中配置 `VITE_APP_CHECK_VERSION` 为 `true` 开启
 
 ## *Node版本 >= v24*
 
