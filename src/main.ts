@@ -10,7 +10,7 @@ const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 const app = createApp(App).use(router).use(pinia);
 app.mount('#app');
-const req = new Request({ prefixUrl: `/${import.meta.env.VITE_APP_ROUTER_PREFIX}` });
+const req = new Request({ prefixUrl: `${import.meta.env.VITE_APP_ROUTER_PREFIX}` });
 function versionCheck() {
   router.beforeEach(() => {
     const { DEV } = import.meta.env;

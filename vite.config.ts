@@ -3,7 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import tailwindcss from '@tailwindcss/vite';
+import legacy from '@vitejs/plugin-legacy';
 import Vue from '@vitejs/plugin-vue';
+import browserslist from 'browserslist';
+import { browserslistToTargets } from 'lightningcss';
 import AutoImport from 'unplugin-auto-import/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
@@ -26,8 +29,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       }),
       Components({
         dts: true,
-        dirs: ['src/components', 'src/views', 'src/layouts'],
+        dirs: ['src/components', 'src/pages', 'src/layouts'],
         resolvers: [ElementPlusResolver()],
+      }),
+      legacy({
+        modernPolyfills: true,
+        renderLegacyChunks: false,
+        modernTargets: browserslist(),
       }),
       {
         name: 'branch-info',
@@ -46,13 +54,18 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         },
       },
     ],
+    css: {
+      transformer: 'lightningcss',
+      lightningcss: { targets: browserslistToTargets(browserslist()) },
+    },
     build: {
       outDir: env.VITE_APP_OUTPUT,
+      cssMinify: 'lightningcss',
       sourcemap: Boolean(env.VITE_APP_SOURCEMAP),
     },
     server: {
       host: 'localhost',
       port: 3333,
     },
-  } as UserConfig;
+  };
 });
