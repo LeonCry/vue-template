@@ -1,25 +1,78 @@
-# VUE3 项目模板
-- 基于 vue3 + typescript + pinia + tailwindcss 等技术栈的项目模板
+# Vue 3 项目模板
 - github: https://github.com/LeonCry/vue-template
 - cli: https://github.com/LeonCry/ice-sea-template-cli
 
-## 功能点
 
-- 版本查询并更新功能, 可在 `.env.local` 中配置 `VITE_APP_CHECK_VERSION` 为 `true` 开启
+一个基于 Vue 3 + Vite 7 + TypeScript 5 的现代前端模板，集成 Pinia、Vue Router、Element Plus、Tailwind CSS v4、自动导入、组件解析、LightningCSS 构建优化、提交规范与钩子等工程能力。
 
-## *Node版本 >= v24*
 
 ## 插件（vscode）
-
 - 打开项目会有推荐安装插件,建议一键安装
 
-## 环境变量
+## 要求
+- Node >= v24
+- 推荐使用 pnpm 作为包管理器
 
-- `.env.dev` `.env.pre` `.env.prod` 中 `VITE_PREFIX_URL` 表示接口前缀
+## 技术栈
+- 框架：Vue 3（组合式 API）
+- 构建：Vite 7
+- 语言：TypeScript 5
+- 状态管理：Pinia（含持久化 pinia-plugin-persistedstate）
+- 路由：Vue Router 4（Hash 路由）
+- UI：Element Plus（自动解析）
+- 样式：Tailwind CSS v4（@tailwindcss/vite，LightningCSS 压缩）
+- 网络：ky（轻量 HTTP 客户端）
+- 规范：ESLint（@antfu/eslint-config）、Commitlint、Commitizen + cz-git、Husky + lint-staged
+- 兼容：@vitejs/plugin-legacy（按 browserslist 生成现代目标）
 
-## CSS拓展
+## 快速开始
+```bash
+# 安装依赖
+pnpm install
 
-- 使用 `tailwindcss` 编写样式
+# 开发环境
+pnpm dev
+pnpm pre  
+pnpm prod
+
+# 构建产物
+pnpm build:dev
+pnpm build:pre
+pnpm build:prod
+
+```
+
+## 目录结构
+```
+.
+├─ src/
+│  ├─ components/        # 业务组件
+│  ├─ pages/             # 页面组件
+│  ├─ layouts/           # 布局组件
+│  ├─ router/            # 路由定义
+│  ├─ stores/            # Pinia 仓库
+│  ├─ utils/             # 工具方法
+│  ├─ types/             # 类型定义
+│  ├─ App.vue            
+│  └─ main.ts                     
+├─ .env*                 # 环境变量
+```
+
+## 提交与规范
+- 启用 Git 钩子
+  ```bash
+  pnpm prepare
+  ```
+- 规范化提交（内置中文交互）
+  ```bash
+  pnpm cz
+  ```
+- 预提交钩子
+  - 分支保护：.husky/pre-commit 中 PROTECTED_BRANCHES="main|master" 设置分支保护。
+  - 执行 `lint-staged`：对变更的 `js/ts/vue` 文件运行 ESLint 自动修复。
+
+## 浏览器兼容
+- `browserslist`: `defaults, Chrome >= 87`
 
 ## git提交
 

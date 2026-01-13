@@ -20,9 +20,7 @@ class Request {
   private headers: Record<string, string>;
   constructor(options?: Options) {
     this.kyOptions = {
-      prefixUrl: options?.noPrefixUrl
-        ? undefined
-        : options?.prefixUrl || import.meta.env.VITE_PREFIX_URL,
+      prefixUrl: options?.prefixUrl || import.meta.env.VITE_PREFIX_URL,
       timeout: options?.timeout,
     };
     this.headers = options?.headers || {};
@@ -89,7 +87,7 @@ class Request {
         .split(';')
         .map(item => item.trim().split('='))
         .find(([key]) => key === 'filename');
-      if (entity) name = decodeURIComponent(entity[1]);
+      if (entity) name = decodeURIComponent(entity[1] || '');
     }
     const lh = URL.createObjectURL(b);
     const link = document.createElement('a');

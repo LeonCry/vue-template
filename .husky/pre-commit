@@ -6,7 +6,7 @@ echo "===\n>> 检查分支名称..."
 # Check if branch protection is enabled
 if [[ -z $SKIP_BRANCH_PROTECTION ]]; then
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
-    PROTECTED_BRANCHES="^(main|master|pre)"
+    PROTECTED_BRANCHES="^(|)"
 
     if [[ $BRANCH =~ $PROTECTED_BRANCHES ]]; then
         echo ">> 当前分支 $BRANCH 仅允许合并,不允许直接提交修改."
